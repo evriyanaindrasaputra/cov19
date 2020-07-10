@@ -3,12 +3,14 @@
     <div class="row my-5">
       <div class="col-md-6 offset-md-3 my-2">
         <VueApexCharts width="100%" type="bar" :options="options" :series="series"></VueApexCharts>
+        <p>{{dataCov.confirmed.value}}</p>
       </div>
     </div>
   </div>
 </template>
 <script>
 import VueApexCharts from "vue-apexcharts";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Chart",
   components: {
@@ -21,16 +23,25 @@ export default {
           id: "vuechart-Covid19"
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+          categories: ["Confirmed", "recovered", "deaths"]
         }
       },
       series: [
         {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
+          name: "data-covid19",
+          data: [dataCov.confirmed.value]
         }
       ]
     };
+  },
+  methods: {
+    ...mapActions(["getDataCovid"])
+  },
+  mounted() {
+    this.getDataCovid();
+  },
+  computed: {
+    ...mapGetters(["dataCov"])
   }
 };
 </script>

@@ -8,7 +8,7 @@
           <div class="iCountUp">
             <ICountUp :delay="delay" :endVal="dataCov.confirmed.value" :options="options" />
           </div>
-          <p>date</p>
+          <p>{{new Date(dataCov.lastUpdate).toDateString()}}</p>
         </div>
       </div>
       <div class="p-1 mx-auto my-3">
@@ -18,7 +18,7 @@
           <div class="iCountUp">
             <ICountUp :delay="delay" :endVal="dataCov.recovered.value" :options="options" />
           </div>
-          <p>date</p>
+          <p>{{new Date(dataCov.lastUpdate).toDateString()}}</p>
         </div>
       </div>
       <div class="p-1 mx-auto my-3">
@@ -28,7 +28,7 @@
           <div class="iCountUp">
             <ICountUp :delay="delay" :endVal="dataCov.deaths.value" :options="options" />
           </div>
-          <p>date</p>
+          <p>{{new Date(dataCov.lastUpdate).toDateString()}}</p>
         </div>
       </div>
     </div>
