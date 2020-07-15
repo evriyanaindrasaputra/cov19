@@ -46,11 +46,7 @@ export default {
   },
   data() {
     return {
-      confirmed: "",
-      recovered: "",
-      deaths: "",
       delay: 1000,
-      endVal: 11641640,
       options: {
         useEasing: true,
         useGrouping: true,

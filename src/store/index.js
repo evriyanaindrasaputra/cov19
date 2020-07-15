@@ -7,10 +7,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     dataCov: "",
-    //   confirmed: "",
-    //   recovered: "",
-    //   deaths: "",
-    // },
   },
 
   actions: {

@@ -3,7 +3,6 @@
     <div class="row my-5">
       <div class="col-md-6 offset-md-3 my-2">
         <VueApexCharts width="100%" type="bar" :options="options" :series="series"></VueApexCharts>
-        <p>{{dataCov.confirmed.value}}</p>
       </div>
     </div>
   </div>
@@ -17,22 +16,7 @@ export default {
     VueApexCharts
   },
   data() {
-    return {
-      options: {
-        chart: {
-          id: "vuechart-Covid19"
-        },
-        xaxis: {
-          categories: ["Confirmed", "recovered", "deaths"]
-        }
-      },
-      series: [
-        {
-          name: "data-covid19",
-          data: [dataCov.confirmed.value]
-        }
-      ]
-    };
+    return {};
   },
   methods: {
     ...mapActions(["getDataCovid"])
@@ -41,7 +25,29 @@ export default {
     this.getDataCovid();
   },
   computed: {
-    ...mapGetters(["dataCov"])
+    ...mapGetters(["dataCov"]),
+    options() {
+      return {
+        chart: {
+          id: "vuechart-Covid19"
+        },
+        xaxis: {
+          categories: ["Confirmed", "recovered", "deaths"]
+        }
+      };
+    },
+    series() {
+      return [
+        {
+          name: "data-covid19",
+          data: [
+            this.dataCov.confirmed.value,
+            this.dataCov.recovered.value,
+            this.dataCov.deaths.value
+          ]
+        }
+      ];
+    }
   }
 };
 </script>
